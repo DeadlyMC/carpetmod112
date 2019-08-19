@@ -693,6 +693,11 @@ public class CarpetSettings
     private static boolean validateTileTickLimit(int value) {
         return value >= -1;
     }
+    
+    @Rule(desc = "Tweak rcon protocol to allow chat bridges using it", category = {SURVIVAL, EXPERIMENTAL})
+    @CreativeDefault
+    @SurvivalDefault
+    public static boolean rconChatBridge= false;
 
 
     // ===== API ===== //
