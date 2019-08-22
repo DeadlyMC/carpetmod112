@@ -1,0 +1,33 @@
+--- ../src-base/minecraft/net/minecraft/advancements/PlayerAdvancements.java
++++ ../src-work/minecraft/net/minecraft/advancements/PlayerAdvancements.java
+@@ -1,5 +1,6 @@
+ package net.minecraft.advancements;
+ 
++import carpet.CarpetSettings;
+ import com.google.common.collect.Lists;
+ import com.google.common.collect.Maps;
+ import com.google.common.collect.Sets;
+@@ -29,6 +30,8 @@
+ import net.minecraft.util.text.TextComponentTranslation;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
++import net.minecraft.network.rcon.RConThreadMain;
++import net.minecraft.server.dedicated.DedicatedServer;
+ 
+ public class PlayerAdvancements
+ {
+@@ -213,6 +216,14 @@
+                 if (p_192750_1_.func_192068_c() != null && p_192750_1_.func_192068_c().func_193220_i() && this.field_192762_j.field_70170_p.func_82736_K().func_82766_b("announceAdvancements"))
+                 {
+                     this.field_192756_d.func_184103_al().func_148539_a(new TextComponentTranslation("chat.type.advancement." + p_192750_1_.func_192068_c().func_192291_d().func_192307_a(), new Object[] {this.field_192762_j.func_145748_c_(), p_192750_1_.func_193123_j()}));
++    
++                    // [BCM] Rcon chat bridge - send advancement messages
++                    if (CarpetSettings.rconChatBridge)
++                    {
++                        RConThreadMain rconThread = ((DedicatedServer)this.field_192756_d).field_71339_n;
++                        if (rconThread != null)
++                            rconThread.sendMessageCarpetChatBridge(new TextComponentTranslation("chat.type.advancement." + p_192750_1_.func_192068_c().func_192291_d().func_192307_a(), new Object[] {this.field_192762_j.func_145748_c_(), p_192750_1_.func_193123_j()}).func_150260_c());
++                    }
+                 }
+             }
+         }
