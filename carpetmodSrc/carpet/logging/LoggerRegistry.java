@@ -46,6 +46,7 @@ public class LoggerRegistry
     public static boolean __instantComparators;
     public static boolean __items;
     public static boolean __rng;
+    public static boolean __blockEvents;
     public static boolean __recipes;
     public static boolean __damageDebug;
     public static boolean __invisDebug;
@@ -63,6 +64,7 @@ public class LoggerRegistry
         registerLogger("instantComparators", new Logger(server, "instantComparators", "all", new String[]{"all", "tileTick", "buggy"}, LogHandler.CHAT));
         registerLogger("items",new Logger(server, "items", "brief", new String[]{"brief", "full"}, LogHandler.CHAT));
         registerLogger("rng", new Logger(server, "rng", null, null, LogHandler.CHAT));
+        registerLogger("blockEvents", new Logger(server, "blockEvents", null, null, LogHandler.CHAT));
 
         registerLogger("tps", new Logger(server, "tps", null, null, LogHandler.HUD));
         registerLogger("packets", new Logger(server, "packets", null, null, LogHandler.HUD));
