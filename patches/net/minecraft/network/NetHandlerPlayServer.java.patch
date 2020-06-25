@@ -109,7 +109,30 @@
              this.field_147369_b.field_71134_c.func_187250_a(this.field_147369_b, worldserver, itemstack, enumhand);
          }
      }
-@@ -1200,7 +1232,15 @@
+@@ -1009,13 +1041,17 @@
+                 break;
+             case START_FALL_FLYING:
+ 
+-                if (!this.field_147369_b.field_70122_E && this.field_147369_b.field_70181_x < 0.0D && !this.field_147369_b.func_184613_cA() && !this.field_147369_b.func_70090_H())
++                if (!this.field_147369_b.field_70122_E && !this.field_147369_b.func_184613_cA() && !this.field_147369_b.func_70090_H())
+                 {
+-                    ItemStack itemstack = this.field_147369_b.func_184582_a(EntityEquipmentSlot.CHEST);
+-
+-                    if (itemstack.func_77973_b() == Items.field_185160_cR && ItemElytra.func_185069_d(itemstack))
++                    // Remove the falling check as in 1.15 CARPET-XCOM
++                    if (CarpetSettings.elytraCheckFix || this.field_147369_b.field_70181_x < 0.0D)
+                     {
+-                        this.field_147369_b.func_184847_M();
++                        ItemStack itemstack = this.field_147369_b.func_184582_a(EntityEquipmentSlot.CHEST);
++    
++                        if (itemstack.func_77973_b() == Items.field_185160_cR && ItemElytra.func_185069_d(itemstack))
++                        {
++                            this.field_147369_b.func_184847_M();
++                        }
+                     }
+                 }
+                 else
+@@ -1200,7 +1236,15 @@
                              }
                              else
                              {
@@ -126,7 +149,7 @@
                              }
                          }
  
-@@ -1732,13 +1772,14 @@
+@@ -1732,13 +1776,14 @@
                      String s8 = packetbuffer5.func_150789_c(32);
                      tileentitystructure.func_184405_a(TileEntityStructure.Mode.valueOf(s8));
                      tileentitystructure.func_184404_a(packetbuffer5.func_150789_c(64));
@@ -147,7 +170,7 @@
                      tileentitystructure.func_184409_c(new BlockPos(l2, i3, j));
                      String s2 = packetbuffer5.func_150789_c(32);
                      tileentitystructure.func_184411_a(Mirror.valueOf(s2));
-@@ -1775,6 +1816,17 @@
+@@ -1775,6 +1820,17 @@
                          }
                          else
                          {
@@ -165,7 +188,7 @@
                              this.field_147369_b.func_146105_b(new TextComponentTranslation("structure_block.load_prepare", new Object[] {s4}), false);
                          }
                      }
-@@ -1816,5 +1868,9 @@
+@@ -1816,5 +1872,9 @@
                  field_147370_c.error("Couldn't pick item", (Throwable)exception);
              }
          }

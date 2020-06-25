@@ -726,6 +726,9 @@ public class CarpetSettings
     
     @Rule(desc = "Removes the timeout caused by delays attempting to login.", category = FIX)
     public static boolean removeConnectionTimeout;
+    
+    @Rule(desc = "Fixes the elytra check similar to 1.15 where the player do not have to fall to deploy elytra anymore.", category = FIX)
+    public static boolean elytraCheckFix;
 
 
     // ===== API ===== //
